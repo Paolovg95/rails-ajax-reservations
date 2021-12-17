@@ -1,0 +1,6 @@
+  <%= simple_form_for(@room) do |f| %>
+    <%= f.input :date, as: :date %>
+    <%= f.input :time, as: :time %>
+
+    <%= f.submit "Submit", class: "btn btn-outline-success" %>
+  <% end %>
