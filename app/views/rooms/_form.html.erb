@@ -1,8 +1,7 @@
-  <%= simple_form_for(@room,
-    data: { insert_into_calendar_target: 'form',
-            action: 'submit->insert-into-calendar#send'}) do |f| %>
-    <%= f.input :date, as: :date %>
-    <%= f.input :time, as: :time %>
+  <%= simple_form_for(@room, remote: true) do |f| %>
+
+    <%= f.input :title %>
+    <%= f.input :description %>
 
     <%= f.submit "Submit", class: "btn btn-outline-success" %>
   <% end %>

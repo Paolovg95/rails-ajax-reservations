@@ -1,6 +1,14 @@
 <%= link_to "Sign In", new_user_registration_path %>
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+
+<% @users.each do |user| %>
+  <% user.rooms.each do |room| %>
+    User: <%= room.user.email %>
+  <% end %>
+<% end %>
+
 <h1>Rooms</h1>
+
 
 
 <table class="table table-striped">
@@ -13,11 +21,12 @@
     </tr>
   </thead>
   <tbody>
-    <% (6..23).each do |time| %>
+    <% Room::TIMES.each do |time| %>
+
       <tr class="border">
-        <th scope="row"><%= "#{time}:00" %></th>
+        <th scope="row"><%= "#{time}" %></th>
         <td>
-          <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+          <button type="button" class="btn btn-outline-primary border-none" data-toggle="modal" data-target="#exampleModal">
             Disponivel
           </button>
         </td>
@@ -46,11 +55,9 @@
   </tbody>
 </table>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-<!-- Modal -->
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -65,7 +72,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
